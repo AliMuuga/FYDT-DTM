@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FYDT — Clothing</title>
     <link rel="icon" type="image/png" href="images/Logo/Favicon.png">
+    <!-- Fonts: Montserrat for body text, Oswald for headings -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&amp;family=Oswald:wght@400;500;700&amp;display=swap" rel="stylesheet">
+    <!-- Font Awesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Main stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+    <!-- NAVIGATION HEADER -->
     <header class="navbar">
       <a href="index.html" class="logo-link"><img src="images/Logo/Logo.png" alt="FYDT logo"></a>
         <nav>
@@ -19,9 +23,11 @@
             <a href="clothing.html" class="nav-link">Clothing</a>
         </nav>
         <div class="navbar-actions">
+            <!-- Sign-in button -->
             <button class="icon-btn" onclick="toggleSignIn()">
                 <i class="fas fa-user"></i>
             </button>
+            <!-- Cart button with item count badge -->
             <button class="icon-btn" onclick="toggleCart()">
                 <i class="fas fa-bag-shopping"></i>
                 <span id="cart-count" class="cart-count">0</span>
@@ -29,25 +35,30 @@
         </div>
     </header>
 
+    <!-- MAIN CLOTHING SECTION -->
     <section class="clothing-section">
         <div class="section-header">
             <h2>Threads of Resistance</h2>
             <p>Streetwear that carries history</p>
         </div>
 
+        <!-- PRODUCT GRID -->
         <div class="products-grid">
-            <div class="product-card" data-front="images/clothing/FDB.jpg" data-back="images/clothing/BDB.jpg" data-name="Soul of Mannenberg" data-price="500">
+            <!-- Product 1: Soul of Mannenberg -->
+            <div class="product-card" data-front="images/clothing/FDB.jpg" data-back="images/clothing/BDB.jpg" data-name="Soul of Mannenberg" data-price="500" onclick="openSheet(this.dataset.front, this.dataset.name, this.dataset.price, this.dataset.front, this.dataset.back)">
                 <img src="images/clothing/FDB.jpg" alt="Soul of Manenberg Tee" class="product-img">
                 <div class="product-info">
                     <h3>SOUL OF MANNENBERG</h3>
                     <p>R500</p>
                 </div>
+                <!-- Quick add to cart overlay -->
                 <div class="cart-overlay" onclick="quickAddToCart(event, this)">
                     <i class="fas fa-bag-shopping"></i>
                 </div>
             </div>
 
-            <div class="product-card" data-front="images/clothing/FHM.jpg" data-back="images/clothing/BHM.jpg" data-name="Freedom Call" data-price="500">
+            <!-- Product 2: Freedom Call -->
+            <div class="product-card" data-front="images/clothing/FHM.jpg" data-back="images/clothing/BHM.jpg" data-name="Freedom Call" data-price="500" onclick="openSheet(this.dataset.front, this.dataset.name, this.dataset.price, this.dataset.front, this.dataset.back)">
                 <img src="images/clothing/FHM.jpg" alt="Legacy Hoodie" class="product-img">
                 <div class="product-info">
                     <h3>FREEDOM CALL</h3>
@@ -58,7 +69,8 @@
                 </div>
             </div>
 
-            <div class="product-card" data-front="images/clothing/FBF.jpg" data-back="images/clothing/BBF.jpg" data-name="Black Rebellion" data-price="500">
+            <!-- Product 3: Black Rebellion -->
+            <div class="product-card" data-front="images/clothing/FBF.jpg" data-back="images/clothing/BBF.jpg" data-name="Black Rebellion" data-price="500" onclick="openSheet(this.dataset.front, this.dataset.name, this.dataset.price, this.dataset.front, this.dataset.back)">
                 <img src="images/clothing/FBF.jpg" alt="Archive Jacket" class="product-img">
                 <div class="product-info">
                     <h3>BLACK REBELLION</h3>
@@ -69,7 +81,8 @@
                 </div>
             </div>
 
-            <div class="product-card" data-front="images/clothing/FMM.jpg" data-back="images/clothing/BMM.jpg" data-name="Africa's Voice" data-price="500">
+            <!-- Product 4: Africa's Voice -->
+            <div class="product-card" data-front="images/clothing/FMM.jpg" data-back="images/clothing/BMM.jpg" data-name="Africa's Voice" data-price="500" onclick="openSheet(this.dataset.front, this.dataset.name, this.dataset.price, this.dataset.front, this.dataset.back)">
                 <img src="images/clothing/FMM.jpg" alt="Rebel Cap" class="product-img">
                 <div class="product-info">
                     <h3>AFRICA’S VOICE</h3>
@@ -82,12 +95,13 @@
         </div>
     </section>
 
-    <!-- ARCHIVE COLLECTION -->
+    <!-- ARCHIVE COLLECTION SECTION -->
     <section class="product-showcase">
         <div class="container">
             <h2>Archive Collection</h2>
             <div class="products-grid">
-                <div class="product-card" data-front="images/clothing/FBF.jpg" data-back="images/clothing/BBF.jpg" data-name="Resistance Tee" data-price="500">
+                <!-- Duplicate products for archive section -->
+                <div class="product-card" data-front="images/clothing/FBF.jpg" data-back="images/clothing/BBF.jpg" data-name="Resistance Tee" data-price="500" onclick="openSheet(this.dataset.front, this.dataset.name, this.dataset.price, this.dataset.front, this.dataset.back)">
                     <img src="images/clothing/FBF.jpg" alt="Resistance Tee" class="product-img">
                     <div class="product-info">
                         <h3>BLACK REBELLION</h3>
@@ -97,7 +111,7 @@
                         <i class="fas fa-bag-shopping"></i>
                     </div>
                 </div>
-                <div class="product-card" data-front="images/clothing/FHM.jpg" data-back="images/clothing/BHM.jpg" data-name="Legacy Hoodie" data-price="500">
+                <div class="product-card" data-front="images/clothing/FHM.jpg" data-back="images/clothing/BHM.jpg" data-name="Legacy Hoodie" data-price="500" onclick="openSheet(this.dataset.front, this.dataset.name, this.dataset.price, this.dataset.front, this.dataset.back)">
                     <img src="images/clothing/FHM.jpg" alt="Legacy Hoodie" class="product-img">
                     <div class="product-info">
                         <h3>FREEDOM CALL</h3>
@@ -107,7 +121,7 @@
                         <i class="fas fa-bag-shopping"></i>
                     </div>
                 </div>
-                <div class="product-card" data-front="images/clothing/FDB.jpg" data-back="images/clothing/BDB.jpg" data-name="Archive Jacket" data-price="500">
+                <div class="product-card" data-front="images/clothing/FDB.jpg" data-back="images/clothing/BDB.jpg" data-name="Archive Jacket" data-price="500" onclick="openSheet(this.dataset.front, this.dataset.name, this.dataset.price, this.dataset.front, this.dataset.back)">
                     <img src="images/clothing/FDB.jpg" alt="Archive Jacket" class="product-img">
                     <div class="product-info">
                         <h3>SOUL OF MANNENBERG</h3>
@@ -117,7 +131,7 @@
                         <i class="fas fa-bag-shopping"></i>
                     </div>
                 </div>
-                <div class="product-card" data-front="images/clothing/FMM.jpg" data-back="images/clothing/BMM.jpg" data-name="Rebel Cap" data-price="500">
+                <div class="product-card" data-front="images/clothing/FMM.jpg" data-back="images/clothing/BMM.jpg" data-name="Rebel Cap" data-price="500" onclick="openSheet(this.dataset.front, this.dataset.name, this.dataset.price, this.dataset.front, this.dataset.back)">
                     <img src="images/clothing/FMM.jpg" alt="Rebel Cap" class="product-img">
                     <div class="product-info">
                         <h3>AFRICA'S VOICE</h3>
@@ -131,20 +145,26 @@
         </div>
     </section>
 
-    <!-- PRODUCT SHEET (modal window) -->
+    <!-- PRODUCT DETAIL MODAL (sheet) -->
+    <div id="sheetOverlay" class="sheet-overlay" onclick="closeSheet()"></div>
     <div id="productSheet" class="product-sheet">
+        <!-- Close button -->
         <button class="close-btn" onclick="closeSheet()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 1.5rem; cursor: pointer; z-index: 10;">&times;</button>
+        <!-- Product image -->
         <img id="sheetImg" alt="">
         <div class="sheet-content">
+            <!-- Product name and price -->
             <h2 id="sheetName"></h2>
             <p id="sheetPrice"></p>
 
+            <!-- Product specifications -->
             <div class="product-details">
                 <strong>220 GSM HEAVYWEIGHT</strong><br>
                 <strong>100% CARDED COTTON</strong><br>
                 <strong>CLASSIC FIT</strong>
             </div>
 
+            <!-- Color selection -->
             <div class="option-group">
                 <p>Color</p>
                 <div class="options">
@@ -153,6 +173,7 @@
                 </div>
             </div>
 
+            <!-- Size selection -->
             <div class="option-group">
                 <p>Size</p>
                 <div class="options">
@@ -163,6 +184,7 @@
                 </div>
             </div>
 
+            <!-- Add to cart button -->
             <button class="add-btn" onclick="addFromSheet()">Add to Cart</button>
         </div>
     </div>
@@ -170,16 +192,19 @@
     <!-- SIGN IN MODAL -->
     <div id="signinModalOverlay" class="signin-modal-overlay">
         <div class="signin-modal">
+            <!-- Close button -->
             <button class="close-signin" onclick="closeSignIn()">&times;</button>
             <div class="signin-logo">
                 <img src="images/logo.png" alt="FYDT logo">
             </div>
             <h2>Sign In</h2>
+            <!-- Sign-in form -->
             <form class="signin-form" onsubmit="handleSignIn(event)">
                 <input type="email" placeholder="Email" required>
                 <input type="password" placeholder="Password" required>
                 <button type="submit" class="signin-btn">Sign In</button>
             </form>
+            <!-- Sign-in status display -->
             <div id="signinStatus" class="signin-status" style="display:none;">
                 <span id="signinStatusText"></span>
                 <button type="button" class="secondary-btn" onclick="handleSignOut()">Sign Out</button>
@@ -188,13 +213,15 @@
         </div>
     </div>
 
-    <!-- TOAST -->
+    <!-- TOAST NOTIFICATION -->
     <div id="toast" class="toast">
         <i class="fas fa-check-circle"></i>
         <span id="toast-text"></span>
     </div>
 
+    <!-- FOOTER -->
     <footer> 
+        <!-- Newsletter signup -->
         <div class="newsletter">
             <h3>Stay Updated</h3>
             <p>Get the latest drops and exclusive content</p>
@@ -204,6 +231,7 @@
             </form>
         </div>
 
+        <!-- Social media links -->
         <div class="socials">
             <!-- Instagram -->
             <a href="https://www.instagram.com/finnyoudidthis?igsh=am9paG94Zzg5OW44" target="_blank">
@@ -221,6 +249,7 @@
             </a> 
         </div> 
 
+        <!-- Terms and copyright -->
         <div class="footer-terms">
             Delivery: 2-7 days anywhere in South Africa. Return terms: exchange within 7 days. No refunds.
         </div>
@@ -228,7 +257,7 @@
     </footer>
 
 
-    <!-- CART -->
+    <!-- CART SIDEBAR -->
     <div id="cartOverlay" class="cart-overlay-bg" onclick="closeCart()"></div>
     <div id="cartDrawer" class="cart-drawer">
         <div class="cart-header">
@@ -236,14 +265,18 @@
             <button class="close-cart" onclick="closeCart()">&times;</button>
         </div>
         <div class="cart-content">
+            <!-- Cart items will be inserted here -->
             <div id="cartItems"></div>
+            <!-- Cart total -->
             <div class="cart-total">
                 <h3 id="total">Total: R0</h3>
             </div>
+            <!-- Checkout button -->
             <button class="checkout-btn" onclick="payNow()">Checkout with PayFast</button>
         </div>
     </div>
 
+    <!-- Main JavaScript file -->
     <script src="script.js"></script>
 </body>
 </html>

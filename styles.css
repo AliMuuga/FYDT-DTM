@@ -1342,3 +1342,14 @@ body::before {
 .close-signin:hover {
     color: #000;
 }
+.sheet-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    display: none;
+    z-index: 2999;
+}
+
+.sheet-overlay.active {
+    display: block;
+}
