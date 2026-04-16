@@ -313,3 +313,45 @@ document.querySelectorAll(".product-card").forEach(card => {
         img.src = front;
     });
 });
+
+function quickAddToCart(event, el) {
+    event.stopPropagation();
+
+    const card = el.closest(".product-card");
+
+    addToCart(
+        card.dataset.name,
+        card.dataset.price,
+        "Black",
+        "M",
+        card.dataset.front
+    );
+
+    showToast("Added to cart");
+}
+// ===============================
+// PRODUCT OPTIONS (FIXED)
+// ===============================
+function selectColor(color, btn) {
+    selectedColor = color;
+
+    document.querySelectorAll(".options button").forEach(b => {
+        if (b.textContent === "Black" || b.textContent === "White") {
+            b.classList.remove("active");
+        }
+    });
+
+    btn.classList.add("active");
+}
+
+function selectSize(size, btn) {
+    selectedSize = size;
+
+    document.querySelectorAll(".options button").forEach(b => {
+        if (["S", "M", "L", "XL"].includes(b.textContent)) {
+            b.classList.remove("active");
+        }
+    });
+
+    btn.classList.add("active");
+}
