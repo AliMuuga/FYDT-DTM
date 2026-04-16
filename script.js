@@ -273,3 +273,43 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+// ===============================
+// IMAGE HOVER SWAP (FIXED)
+// ===============================
+document.querySelectorAll(".product-card").forEach(card => {
+    const img = card.querySelector("img");
+
+    const front = card.dataset.front;
+    const back = card.dataset.back;
+
+    if (!img || !front || !back) return;
+
+    card.addEventListener("mouseenter", () => {
+        img.src = back;
+    });
+
+    card.addEventListener("mouseleave", () => {
+        img.src = front;
+    });
+});
+
+// ===============================
+// IMAGE HOVER SWAP (FIXED)
+// ===============================
+document.querySelectorAll(".product-card").forEach(card => {
+    const img = card.querySelector("img");
+
+    const front = card.dataset.front;
+    const back = card.dataset.back;
+
+    if (!img || !front || !back) return;
+
+    card.addEventListener("mouseenter", () => {
+        img.src = back;
+    });
+
+    card.addEventListener("mouseleave", () => {
+        img.src = front;
+    });
+});
