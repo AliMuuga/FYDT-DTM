@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FYDT — Clothing</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&amp;family=Oswald:wght@400;500;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <img src="images/logo.png" alt="FYDT">
+        </div>
+        <nav>
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="artists.html" class="nav-link">Artists</a>
+            <a href="clothing.html" class="nav-link">Clothing</a>
+        </nav>
+        <button class="icon-btn" onclick="toggleCart()">
+            <i class="fas fa-bag-shopping"></i>
+            <span id="cart-count" class="cart-count">0</span>
+        </button>
+    </header>
+
+    <section class="clothing-section">
+        <div class="section-header">
+            <h2>Threads of Resistance</h2>
+            <p>Streetwear that carries history</p>
+        </div>
+
+        <div class="products-grid">
+            <div class="product-card" data-name="Resistance Tee" data-price="299" data-img="images/clothing/HF.jpg">
+                <img src="images/clothing/HF.jpg" alt="Resistance Tee">
+                <div class="product-info">
+                    <h3>Resistance Tee</h3>
+                    <p>R299</p>
+                </div>
+                <div class="cart-overlay" onclick="quickAddToCart(event, this)">
+                    <i class="fas fa-bag-shopping"></i>
+                </div>
+            </div>
+
+            <div class="product-card" data-name="Legacy Hoodie" data-price="399" data-img="images/clothing/HF.jpg">
+                <img src="images/clothing/HF.jpg" alt="Legacy Hoodie">
+                <div class="product-info">
+                    <h3>Legacy Hoodie</h3>
+                    <p>R399</p>
+                </div>
+                <div class="cart-overlay" onclick="quickAddToCart(event, this)">
+                    <i class="fas fa-bag-shopping"></i>
+                </div>
+            </div>
+
+            <div class="product-card" data-name="Archive Jacket" data-price="599" data-img="images/clothing/HF.jpg">
+                <img src="images/clothing/HF.jpg" alt="Archive Jacket">
+                <div class="product-info">
+                    <h3>Archive Jacket</h3>
+                    <p>R599</p>
+                </div>
+                <div class="cart-overlay" onclick="quickAddToCart(event, this)">
+                    <i class="fas fa-bag-shopping"></i>
+                </div>
+            </div>
+
+            <div class="product-card" data-name="Rebel Cap" data-price="249" data-img="images/clothing/HF.jpg">
+                <img src="images/clothing/HF.jpg" alt="Rebel Cap">
+                <div class="product-info">
+                    <h3>Rebel Cap</h3>
+                    <p>R249</p>
+                </div>
+                <div class="cart-overlay" onclick="quickAddToCart(event, this)">
+                    <i class="fas fa-bag-shopping"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT SHEET (smaller image) -->
+    <div id="productSheet" class="product-sheet">
+      
+        <img id="sheetImg" alt="">
+        <div class="sheet-content">
+            <h2 id="sheetName"></h2>
+            <p id="sheetPrice"></p>
+
+            <div class="option-group">
+                <p>Color</p>
+                <div class="options">
+                    <button onclick="selectColor('Black', this)">Black</button>
+                    <button onclick="selectColor('White', this)">White</button>
+                </div>
+            </div>
+
+            <div class="option-group">
+                <p>Size</p>
+                <div class="options">
+                    <button onclick="selectSize('S', this)">S</button>
+                    <button onclick="selectSize('M', this)">M</button>
+                    <button onclick="selectSize('L', this)">L</button>
+                    <button onclick="selectSize('XL', this)">XL</button>
+                </div>
+            </div>
+
+            <button class="add-btn" onclick="addFromSheet()">Add to Cart</button>
+            <button class="close-btn" onclick="closeSheet()">Close</button>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div id="toast" class="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toast-text"></span>
+    </div>
+
+    <footer> 
+  <div class="socials">
+    
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/finnyoudidthis?igsh=am9paG94Zzg5OW44" target="_blank">
+      <i class="fab fa-instagram"></i>
+    </a> 
+
+    <!-- TikTok -->
+    <a href="https://www.tiktok.com/@finnyoudidthis?_r=1&_t=ZS-95aFobzs3Ij" target="_blank">
+      <i class="fab fa-tiktok"></i>
+    </a> 
+
+    <!-- Pinterest -->
+    <a href="https://pin.it/3e8Nqt78H" target="_blank">
+      <i class="fab fa-pinterest"></i>
+    </a> 
+
+  </div> 
+
+  <p>FYDT © 2026</p> 
+</footer>
+
+
+    <!-- CART -->
+    <div id="cartOverlay" class="cart-overlay-bg" onclick="closeCart()"></div>
+    <div id="cartDrawer" class="cart-drawer">
+        <button class="close-cart" onclick="closeCart()"><i class="fas fa-times"></i></button>
+        <h2>Your Cart</h2>
+        <div id="cartItems"></div>
+        <h3 id="total">Total: R0</h3>
+        <button class="checkout-btn" onclick="payNow()">Checkout with PayFast</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
