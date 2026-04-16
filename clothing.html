@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FYDT — Clothing</title>
-    
+    <link rel="icon" type="image/png" href="images/Logo/Favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&amp;family=Oswald:wght@400;500;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -12,18 +12,21 @@
 <body>
 
     <header class="navbar">
-        <div class="logo">
-            <img src="images/logo.png" alt="FYDT">
-        </div>
+      <a href="index.html" class="logo-link"><img src="images/Logo/Logo.png" alt="FYDT logo"></a>
         <nav>
             <a href="index.html" class="nav-link">Home</a>
             <a href="artists.html" class="nav-link">Artists</a>
             <a href="clothing.html" class="nav-link">Clothing</a>
         </nav>
-        <button class="icon-btn" onclick="toggleCart()">
-            <i class="fas fa-bag-shopping"></i>
-            <span id="cart-count" class="cart-count">0</span>
-        </button>
+        <div class="navbar-actions">
+            <button class="icon-btn" onclick="toggleSignIn()">
+                <i class="fas fa-user"></i>
+            </button>
+            <button class="icon-btn" onclick="toggleCart()">
+                <i class="fas fa-bag-shopping"></i>
+                <span id="cart-count" class="cart-count">0</span>
+            </button>
+        </div>
     </header>
 
     <section class="clothing-section">
@@ -33,44 +36,44 @@
         </div>
 
         <div class="products-grid">
-            <div class="product-card" data-name="Resistance Tee" data-price="299" data-img="images/clothing/HF.jpg">
-                <img src="images/clothing/HF.jpg" alt="Resistance Tee">
+            <div class="product-card" data-front="images/clothing/FDB.jpg" data-back="images/clothing/BDB.jpg" data-name="Soul of Mannenberg" data-price="500">
+                <img src="images/clothing/FDB.jpg" alt="Soul of Manenberg Tee" class="product-img">
                 <div class="product-info">
-                    <h3>Resistance Tee</h3>
-                    <p>R299</p>
+                    <h3>SOUL OF MANNENBERG</h3>
+                    <p>R500</p>
                 </div>
                 <div class="cart-overlay" onclick="quickAddToCart(event, this)">
                     <i class="fas fa-bag-shopping"></i>
                 </div>
             </div>
 
-            <div class="product-card" data-name="Legacy Hoodie" data-price="399" data-img="images/clothing/HF.jpg">
-                <img src="images/clothing/HF.jpg" alt="Legacy Hoodie">
+            <div class="product-card" data-front="images/clothing/FHM.jpg" data-back="images/clothing/BHM.jpg" data-name="Freedom Call" data-price="500">
+                <img src="images/clothing/FHM.jpg" alt="Legacy Hoodie" class="product-img">
                 <div class="product-info">
-                    <h3>Legacy Hoodie</h3>
-                    <p>R399</p>
+                    <h3>FREEDOM CALL</h3>
+                    <p>R500</p>
                 </div>
                 <div class="cart-overlay" onclick="quickAddToCart(event, this)">
                     <i class="fas fa-bag-shopping"></i>
                 </div>
             </div>
 
-            <div class="product-card" data-name="Archive Jacket" data-price="599" data-img="images/clothing/HF.jpg">
-                <img src="images/clothing/HF.jpg" alt="Archive Jacket">
+            <div class="product-card" data-front="images/clothing/FBF.jpg" data-back="images/clothing/BBF.jpg" data-name="Black Rebellion" data-price="500">
+                <img src="images/clothing/FBF.jpg" alt="Archive Jacket" class="product-img">
                 <div class="product-info">
-                    <h3>Archive Jacket</h3>
-                    <p>R599</p>
+                    <h3>BLACK REBELLION</h3>
+                    <p>R500</p>
                 </div>
                 <div class="cart-overlay" onclick="quickAddToCart(event, this)">
                     <i class="fas fa-bag-shopping"></i>
                 </div>
             </div>
 
-            <div class="product-card" data-name="Rebel Cap" data-price="249" data-img="images/clothing/HF.jpg">
-                <img src="images/clothing/HF.jpg" alt="Rebel Cap">
+            <div class="product-card" data-front="images/clothing/FMM.jpg" data-back="images/clothing/BMM.jpg" data-name="Africa's Voice" data-price="500">
+                <img src="images/clothing/FMM.jpg" alt="Rebel Cap" class="product-img">
                 <div class="product-info">
-                    <h3>Rebel Cap</h3>
-                    <p>R249</p>
+                    <h3>AFRICA’S VOICE</h3>
+                    <p>R500</p>
                 </div>
                 <div class="cart-overlay" onclick="quickAddToCart(event, this)">
                     <i class="fas fa-bag-shopping"></i>
@@ -79,13 +82,68 @@
         </div>
     </section>
 
-    <!-- PRODUCT SHEET (smaller image) -->
+    <!-- ARCHIVE COLLECTION -->
+    <section class="product-showcase">
+        <div class="container">
+            <h2>Archive Collection</h2>
+            <div class="products-grid">
+                <div class="product-card" data-front="images/clothing/FBF.jpg" data-back="images/clothing/BBF.jpg" data-name="Resistance Tee" data-price="500">
+                    <img src="images/clothing/FBF.jpg" alt="Resistance Tee" class="product-img">
+                    <div class="product-info">
+                        <h3>BLACK REBELLION</h3>
+                        <p>R500</p>
+                    </div>
+                    <div class="cart-overlay" onclick="quickAddToCart(event, this)">
+                        <i class="fas fa-bag-shopping"></i>
+                    </div>
+                </div>
+                <div class="product-card" data-front="images/clothing/FHM.jpg" data-back="images/clothing/BHM.jpg" data-name="Legacy Hoodie" data-price="500">
+                    <img src="images/clothing/FHM.jpg" alt="Legacy Hoodie" class="product-img">
+                    <div class="product-info">
+                        <h3>FREEDOM CALL</h3>
+                        <p>R500</p>
+                    </div>
+                    <div class="cart-overlay" onclick="quickAddToCart(event, this)">
+                        <i class="fas fa-bag-shopping"></i>
+                    </div>
+                </div>
+                <div class="product-card" data-front="images/clothing/FDB.jpg" data-back="images/clothing/BDB.jpg" data-name="Archive Jacket" data-price="500">
+                    <img src="images/clothing/FDB.jpg" alt="Archive Jacket" class="product-img">
+                    <div class="product-info">
+                        <h3>SOUL OF MANNENBERG</h3>
+                        <p>R500</p>
+                    </div>
+                    <div class="cart-overlay" onclick="quickAddToCart(event, this)">
+                        <i class="fas fa-bag-shopping"></i>
+                    </div>
+                </div>
+                <div class="product-card" data-front="images/clothing/FMM.jpg" data-back="images/clothing/BMM.jpg" data-name="Rebel Cap" data-price="500">
+                    <img src="images/clothing/FMM.jpg" alt="Rebel Cap" class="product-img">
+                    <div class="product-info">
+                        <h3>AFRICA'S VOICE</h3>
+                        <p>R500</p>
+                    </div>
+                    <div class="cart-overlay" onclick="quickAddToCart(event, this)">
+                        <i class="fas fa-bag-shopping"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT SHEET (modal window) -->
     <div id="productSheet" class="product-sheet">
-      
+        <button class="close-btn" onclick="closeSheet()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 1.5rem; cursor: pointer; z-index: 10;">&times;</button>
         <img id="sheetImg" alt="">
         <div class="sheet-content">
             <h2 id="sheetName"></h2>
             <p id="sheetPrice"></p>
+
+            <div class="product-details">
+                <strong>220 GSM HEAVYWEIGHT</strong><br>
+                <strong>100% CARDED COTTON</strong><br>
+                <strong>CLASSIC FIT</strong>
+            </div>
 
             <div class="option-group">
                 <p>Color</p>
@@ -106,7 +164,27 @@
             </div>
 
             <button class="add-btn" onclick="addFromSheet()">Add to Cart</button>
-            <button class="close-btn" onclick="closeSheet()">Close</button>
+        </div>
+    </div>
+
+    <!-- SIGN IN MODAL -->
+    <div id="signinModalOverlay" class="signin-modal-overlay">
+        <div class="signin-modal">
+            <button class="close-signin" onclick="closeSignIn()">&times;</button>
+            <div class="signin-logo">
+                <img src="images/logo.png" alt="FYDT logo">
+            </div>
+            <h2>Sign In</h2>
+            <form class="signin-form" onsubmit="handleSignIn(event)">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit" class="signin-btn">Sign In</button>
+            </form>
+            <div id="signinStatus" class="signin-status" style="display:none;">
+                <span id="signinStatusText"></span>
+                <button type="button" class="secondary-btn" onclick="handleSignOut()">Sign Out</button>
+            </div>
+            <p style="margin-top: 20px; color: #666;">Demo: Use any email/password to sign in</p>
         </div>
     </div>
 
@@ -117,37 +195,53 @@
     </div>
 
     <footer> 
-  <div class="socials">
-    
-    <!-- Instagram -->
-    <a href="https://www.instagram.com/finnyoudidthis?igsh=am9paG94Zzg5OW44" target="_blank">
-      <i class="fab fa-instagram"></i>
-    </a> 
+        <div class="newsletter">
+            <h3>Stay Updated</h3>
+            <p>Get the latest drops and exclusive content</p>
+            <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
 
-    <!-- TikTok -->
-    <a href="https://www.tiktok.com/@finnyoudidthis?_r=1&_t=ZS-95aFobzs3Ij" target="_blank">
-      <i class="fab fa-tiktok"></i>
-    </a> 
+        <div class="socials">
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/finnyoudidthis?igsh=am9paG94Zzg5OW44" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a> 
 
-    <!-- Pinterest -->
-    <a href="https://pin.it/3e8Nqt78H" target="_blank">
-      <i class="fab fa-pinterest"></i>
-    </a> 
+            <!-- TikTok -->
+            <a href="https://www.tiktok.com/@finnyoudidthis?_r=1&_t=ZS-95aFobzs3Ij" target="_blank">
+                <i class="fab fa-tiktok"></i>
+            </a> 
 
-  </div> 
+            <!-- Pinterest -->
+            <a href="https://pin.it/3e8Nqt78H" target="_blank">
+                <i class="fab fa-pinterest"></i>
+            </a> 
+        </div> 
 
-  <p>FYDT © 2026</p> 
-</footer>
+        <div class="footer-terms">
+            Delivery: 2-7 days anywhere in South Africa. Return terms: exchange within 7 days. No refunds.
+        </div>
+        <p>FYDT © 2026</p> 
+    </footer>
 
 
     <!-- CART -->
     <div id="cartOverlay" class="cart-overlay-bg" onclick="closeCart()"></div>
     <div id="cartDrawer" class="cart-drawer">
-        <button class="close-cart" onclick="closeCart()"><i class="fas fa-times"></i></button>
-        <h2>Your Cart</h2>
-        <div id="cartItems"></div>
-        <h3 id="total">Total: R0</h3>
-        <button class="checkout-btn" onclick="payNow()">Checkout with PayFast</button>
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="close-cart" onclick="closeCart()">&times;</button>
+        </div>
+        <div class="cart-content">
+            <div id="cartItems"></div>
+            <div class="cart-total">
+                <h3 id="total">Total: R0</h3>
+            </div>
+            <button class="checkout-btn" onclick="payNow()">Checkout with PayFast</button>
+        </div>
     </div>
 
     <script src="script.js"></script>

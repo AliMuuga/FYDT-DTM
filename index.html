@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FYDT</title>
-
+<link rel="icon" type="image/png" href="images/Logo/Favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="styles.css">
@@ -13,7 +13,7 @@
 <body>
 
 <header class="navbar">
-    <div class="logo"><img src="images/logo.png"></div>
+    <a href="index.html" class="logo-link"><img src="images/Logo/Logo.png" alt="FYDT logo"></a>
 
     <nav>
         <a href="index.html" class="nav-link">Home</a>
@@ -21,10 +21,15 @@
         <a href="clothing.html" class="nav-link">Clothing</a>
     </nav>
 
-    <button class="icon-btn" onclick="toggleCart()">
-        <i class="fas fa-bag-shopping"></i>
-        <span id="cart-count" class="cart-count">0</span>
-    </button>
+    <div class="navbar-actions">
+        <button class="icon-btn" onclick="toggleSignIn()" aria-label="Sign in">
+            <i class="fas fa-user"></i>
+        </button>
+        <button class="icon-btn" onclick="toggleCart()" aria-label="Cart">
+            <i class="fas fa-bag-shopping"></i>
+            <span id="cart-count" class="cart-count">0</span>
+        </button>
+    </div>
 </header>
 
 <section class="small-hero">
@@ -36,11 +41,12 @@
         <img src="images/slide3.jpg" class="slide">
     </div>
 
-
     <div class="hero-content">
-        <h1>It’s deeper than music</h1>
-        <p>Resistance. Identity. Legacy.</p>
-
+        <h1>IT'S DEEPER THAN MUSIC</h1>
+        <p>Voices of Resistance • Culture • Legacy</p>
+        <div class="hero-actions">
+            <a href="#collection" class="primary-btn">Explore Collection</a>
+            <button type="button" class="secondary-btn slide-control" onclick="toggleSlidePlay()">Pause</button>
         </div>
     </div>
 </section>
@@ -58,31 +64,170 @@
     </div>
 </section>
 
-<section class="featured-drop">
-    <div class="section-header">
-        <h2>Threads of Resistance</h2>
+<!-- FEATURED ARTIST -->
+<section id="collection" class="featured-artist">
+    <div class="container">
+        <div class="artist-split">
+            <div class="artist-image">
+                <img src="images/poster/HMP.jpg" alt="Hugh Masekela">
+            </div>
+            <div class="artist-info">
+                <h2>HUGH MASEKELA</h2>
+                <p class="artist-bio">Trumpeter and activist whose music became a weapon against apartheid, inspiring generations with his revolutionary sound.</p>
+                <p class="artist-quote">"Sound is memory."</p>
+                <a href="artists.html" class="primary-btn">View Piece</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRODUCT GRID -->
+<section class="product-showcase">
+    <div class="container">
+        <h2>Archive Collection</h2>
+        <div class="products-grid">
+            <div class="product-card" data-front="images/clothing/FBF.jpg" data-back="images/clothing/BBF.jpg" data-name="Resistance Tee" data-price="299">
+                <img src="images/clothing/FBF.jpg" alt="Resistance Tee" class="product-img">
+                <div class="product-info">
+                    <h3>BLACK REBELLION</h3>
+                    <p>R500</p>
+                </div>
+            </div>
+            <div class="product-card" data-front="images/clothing/FHM.jpg" data-back="images/clothing/BHM.jpg" data-name="Legacy Hoodie" data-price="399">
+                <img src="images/clothing/FHM.jpg" alt="Legacy Hoodie" class="product-img">
+                <div class="product-info">
+                    <h3>FREEDOM CALL</h3>
+                    <p>R500</p>
+                </div>
+            </div>
+            <div class="product-card" data-front="images/clothing/FDB.jpg" data-back="images/clothing/BDB.jpg" data-name="Archive Jacket" data-price="599">
+                <img src="images/clothing/FDB.jpg" alt="Archive Jacket" class="product-img">
+                <div class="product-info">
+                    <h3>SOUL OF MANNENBERG</h3>
+                    <p>R500</p>
+                </div>
+            </div>
+            <div class="product-card" data-front="images/clothing/FMM.jpg" data-back="images/clothing/BMM.jpg" data-name="Rebel Cap" data-price="249">
+                <img src="images/clothing/FMM.jpg" alt="Rebel Cap" class="product-img">
+                <div class="product-info">
+                    <h3>AFRICA’S VOICE</h3>
+                    <p>R500</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ARTIST GRID -->
+<section class="artist-showcase">
+    <div class="container">
+        <h2>Voices of Resistance</h2>
+        <div class="artist-grid">
+            <div class="artist-card" onclick="openArtistModal(this)" data-name="Hugh Masekela" data-title="Trumpeter • Activist" data-bio="Music was resistance." data-quote="Sound is memory." data-image="images/masekela.jpg">
+                <img src="images/poster/HMP.jpg">
+                <div class="artist-overlay">
+                    <h3>Hugh Masekela</h3>
+                </div>
+            </div>
+            <div class="artist-card" onclick="openArtistModal(this)" data-name="Miriam Makeba" data-title="Singer • Humanitarian" data-bio="The voice of Africa that echoed worldwide." data-quote="I am not a victim of emotional conflicts. I am human." data-image="images/makeba.jpg">
+                <img src="images/poster/MMP.jpg">
+                <div class="artist-overlay">
+                    <h3>Miriam Makeba</h3>
+                </div>
+            </div>
+            <div class="artist-card" onclick="openArtistModal(this)" data-name="Abdullah Ibrahim" data-title="Pianist • Composer" 
+            data-bio="Jazz legend who bridged continents with melody." data-quote="Music is the universal language of mankind." data-image="images/poster/BDP.jpg">
+                <img src="images/poster/BDP.jpg">
+                <div class="artist-overlay">
+                    <h3>Abdullah Ibrahim</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section">
+    <div class="container">
+        <h2>WEAR THE STORY</h2>
+        <a href="clothing.html" class="primary-btn">Shop Now</a>
+    </div>
+</section>
+
+<!-- SIGN IN MODAL -->
+<div id="signinModalOverlay" class="signin-modal-overlay">
+    <div class="signin-modal">
+        <button class="close-signin" onclick="closeSignIn()">&times;</button>
+        <div class="signin-logo">
+            <img src="images/Logo/Logo.png" alt="FYDT logo">
+        </div>
+        <h2>Sign In</h2>
+        <form class="signin-form" onsubmit="handleSignIn(event)">
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit" class="signin-btn">Sign In</button>
+        </form>
+        <div id="signinStatus" class="signin-status" style="display:none;">
+            <span id="signinStatusText"></span>
+            <button type="button" class="secondary-btn" onclick="handleSignOut()">Sign Out</button>
+        </div>
+        <p style="margin-top: 20px; color: #666;">Demo: Use any email/password to sign in</p>
+    </div>
+</div>
+
+<!-- ================= CART ================= -->
+<div id="cartOverlay" class="cart-overlay-bg" onclick="closeCart()"></div>
+
+<div id="cartDrawer" class="cart-drawer">
+    <div class="cart-header">
+        <h2>Your Cart</h2>
+        <button class="close-cart" onclick="closeCart()">&times;</button>
+    </div>
+    <div class="cart-content">
+        <div id="cartItems"></div>
+        <div class="cart-total">
+            <h3 id="total">Total: R0</h3>
+        </div>
+        <button class="checkout-btn" onclick="payNow()">Checkout with PayFast</button>
+    </div>
+</div>
+
+<footer> 
+    <div class="newsletter">
+        <h3>Stay Updated</h3>
+        <p>Get the latest drops and exclusive content</p>
+        <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+        </form>
     </div>
 
-  <div class="socials">
-    
-    <!-- Instagram -->
-    <a href="https://www.instagram.com/finnyoudidthis?igsh=am9paG94Zzg5OW44" target="_blank">
-      <i class="fab fa-instagram"></i>
-    </a> 
+    <div class="footer-brand">
+        <h3>FYDT</h3>
+        <p class="footer-tagline">It's Deeper Than Music</p>
+    </div>
 
-    <!-- TikTok -->
-    <a href="https://www.tiktok.com/@finnyoudidthis?_r=1&_t=ZS-95aFobzs3Ij" target="_blank">
-      <i class="fab fa-tiktok"></i>
-    </a> 
+    <div class="socials">
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/finnyoudidthis?igsh=am9paG94Zzg5OW44" target="_blank">
+            <i class="fab fa-instagram"></i>
+        </a> 
 
-    <!-- Pinterest -->
-    <a href="https://pin.it/3e8Nqt78H" target="_blank">
-      <i class="fab fa-pinterest"></i>
-    </a> 
+        <!-- TikTok -->
+        <a href="https://www.tiktok.com/@finnyoudidthis?_r=1&_t=ZS-95aFobzs3Ij" target="_blank">
+            <i class="fab fa-tiktok"></i>
+        </a> 
 
-  </div> 
+        <!-- Pinterest -->
+        <a href="https://pin.it/3e8Nqt78H" target="_blank">
+            <i class="fab fa-pinterest"></i>
+        </a> 
+    </div> 
 
-  <p>FYDT © 2026</p> 
+    <div class="footer-terms">
+        Delivery: 2-7 days anywhere in South Africa. Return terms: exchange within 7 days. No refunds.
+    </div>
+    <p>© 2026</p> 
 </footer>
 
 <script src="script.js"></script>
