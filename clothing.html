@@ -209,21 +209,86 @@
 
 
     <!-- CART SIDEBAR -->
-    <div id="cartOverlay" class="cart-overlay-bg" onclick="closeCart()"></div>
-    <div id="cartDrawer" class="cart-drawer">
-        <div class="cart-header">
-            <h2>Your Cart</h2>
-            <button class="close-cart" onclick="closeCart()">&times;</button>
+<div id="cartOverlay" class="cart-overlay-bg" onclick="closeCart()"></div>
+
+<div id="cartDrawer" class="cart-drawer">
+    <div class="cart-header">
+        <h2>Your Cart</h2>
+        <button class="close-cart" onclick="closeCart()">&times;</button>
+    </div>
+
+    <div class="cart-content">
+        <div id="cartItems"></div>
+
+        <div class="cart-total">
+            <h3 id="total">Total: R0</h3>
         </div>
-        <div class="cart-content">
-            <!-- Cart items will be inserted here -->
-            <div id="cartItems"></div>
-            <!-- Cart total -->
-            <div class="cart-total">
-                <h3 id="total">Total: R0</h3>
+
+        <button class="checkout-btn" onclick="openCheckoutFromCart()">
+            Checkout
+        </button>
+    </div>
+</div>
+
+
+<!-- ===============================
+     CHECKOUT MODAL (MOVE OUTSIDE CART)
+     =============================== -->
+<div class="checkout-overlay" id="checkoutOverlay">
+    <div class="checkout-modal">
+
+        <div class="checkout-steps">
+            <div class="step active">Cart</div>
+            <div class="step">Details</div>
+            <div class="step">Payment</div>
+            <div class="step">Done</div>
+        </div>
+
+        <!-- STEP 1 -->
+        <div class="checkout-step active" id="step-cart">
+            <h2>Your Cart</h2>
+            <div id="checkoutItems"></div>
+            <button onclick="nextStep()" class="checkout-btn">Continue</button>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="checkout-step" id="step-details">
+            <h2>Delivery Details</h2>
+
+            <input type="text" id="customerName" placeholder="Full Name">
+            <input type="text" id="customerPhone" placeholder="Phone Number">
+            <input type="text" id="customerAddress" placeholder="Delivery Address">
+            <input type="text" id="customerCity" placeholder="City">
+
+            <button onclick="nextStep()" class="checkout-btn">Continue to Payment</button>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="checkout-step" id="step-payment">
+            <h2>Payment</h2>
+
+            <div class="payment-box">
+                <p>Pay securely via PayFast or place manual order.</p>
             </div>
-            <!-- Checkout button -->
-            <button class="checkout-btn" onclick="payNow()">Checkout with PayFast</button>
+
+            <button onclick="payNow()" class="checkout-btn">Pay with PayFast</button>
+            <button onclick="whatsappOrder()" class="secondary-btn dark">Order via WhatsApp</button>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="checkout-step" id="step-success">
+            <h2>Order Placed</h2>
+            <p>Your order has been received.</p>
+            <p>We’ll contact you shortly.</p>
+
+            <button onclick="closeCheckout()" class="checkout-btn">Close</button>
+        </div>
+
+        <button class="close-checkout" onclick="closeCheckout()">×</button>
+    </div>
+</div>
+>
+
         </div>
     </div>
 

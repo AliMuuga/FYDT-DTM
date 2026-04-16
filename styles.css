@@ -1406,68 +1406,7 @@ img {
         grid-template-columns: 1fr;
     }
 
-    /* PRODUCT MODAL */
-    .product-sheet {
-        flex-direction: column;
-        max-height: 90vh;
-    }
-
-    .product-sheet img {
-        width: 100%;
-        height: 250px;
-    }
-
-    .sheet-content {
-        width: 100%;
-    }
-
-.cart-item {
-    display: flex;
-    gap: 12px;
-    padding: 16px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.cart-item img {
-    width: 70px;
-    height: 70px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.cart-item-details {
-    flex: 1;
-}
-
-.qty-controls {
-    display: flex;
-    gap: 10px;
-    margin-top: 6px;
-}
-
-.qty-controls button {
-    border: 1px solid #ddd;
-    background: none;
-    padding: 4px 10px;
-    cursor: pointer;
-}
-
-.cart-item-right {
-    text-align: right;
-}
-
-.cart-item-right button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: red;
-}
-
-.empty-cart {
-    text-align: center;
-    padding: 40px;
-    color: #777;
-}
+  
 
 }
 @media (max-width: 768px) {
@@ -1571,3 +1510,382 @@ img {
         padding: 20px;
     }
 }
+/* ===============================
+   MOBILE FIX: 1 PRODUCT PER ROW
+   =============================== */
+@media (max-width: 768px) {
+
+    .products-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+        padding: 20px 15px;
+    }
+
+    .product-card {
+        width: 100%;
+    }
+
+    .product-card img {
+        height: 320px;
+        object-fit: cover;
+    }
+}
+/* ===============================
+   FYDT MOBILE LUXURY FEED UPGRADE
+   =============================== */
+@media (max-width: 768px) {
+
+    /* Single column + spacing like a catalog */
+    .products-grid {
+        grid-template-columns: 1fr !important;
+        gap: 28px;
+        padding: 20px 14px;
+    }
+
+    /* Card becomes more premium */
+    .product-card {
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        transition: transform 0.3s ease;
+    }
+
+    .product-card:active {
+        transform: scale(0.98);
+    }
+
+    /* Image becomes hero-style */
+    .product-card img {
+        height: 420px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    /* Info feels like a label, not clutter */
+    .product-info {
+        padding: 18px;
+        text-align: left;
+        background: #fff;
+    }
+
+    .product-info h3 {
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+    }
+
+    .product-info p {
+        font-size: 1rem;
+    }
+
+    /* Cart icon cleaner on mobile */
+    .cart-overlay {
+        width: 42px;
+        height: 42px;
+        top: 14px;
+        right: 14px;
+    }
+}
+@media (max-width: 768px) {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
+/* ===============================
+   🔥 FYDT MOBILE + CART UPGRADE PATCH
+   (NON-DESTRUCTIVE FIX LAYER)
+   =============================== */
+
+/* ===============================
+   1. MOBILE FEED FIX (CLEAN LUXURY SCROLL)
+   =============================== */
+@media (max-width: 768px) {
+
+    .products-grid {
+        grid-template-columns: 1fr !important;
+        gap: 26px;
+        padding: 16px 12px;
+    }
+
+    .product-card {
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+    }
+
+    .product-card img {
+        height: 380px;
+        object-fit: cover;
+    }
+
+    .product-info {
+        padding: 16px 14px;
+        text-align: left;
+    }
+
+    .product-info h3 {
+        font-size: 1.05rem;
+    }
+
+    .product-info p {
+        font-size: 0.95rem;
+    }
+
+    /* mini cart icon always visible (mobile UX fix) */
+    .mini-cart-icon {
+        opacity: 1 !important;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* ===============================
+   2. PRODUCT SHEET MOBILE FIX (NO CUT OFF)
+   =============================== */
+@media (max-width: 768px) {
+
+    .product-sheet {
+        flex-direction: column !important;
+        width: 94%;
+        max-height: 88vh;
+        border-radius: 18px;
+    }
+
+    .product-sheet img {
+        width: 100%;
+        height: 240px !important;
+        object-fit: cover;
+    }
+
+    .sheet-content {
+        width: 100%;
+        padding: 18px;
+    }
+
+    .sheet-content h2 {
+        font-size: 1.1rem;
+    }
+
+    .sheet-content p {
+        font-size: 0.95rem;
+    }
+
+    .options button {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+    }
+}
+
+/* ===============================
+   3. ARTIST MODAL MOBILE FIX (NO OVERFLOW)
+   =============================== */
+@media (max-width: 768px) {
+
+    .artist-modal {
+        flex-direction: column;
+        width: 94%;
+        max-height: 88vh;
+        border-radius: 18px;
+        overflow: hidden;
+    }
+
+    .artist-modal-image {
+        width: 100%;
+        min-height: 200px;
+    }
+
+    .artist-modal-content {
+        width: 100%;
+        padding: 18px;
+    }
+
+    .artist-modal-content h2 {
+        font-size: 1.2rem;
+    }
+
+    .artist-modal-content p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+}
+
+/* ===============================
+   4. 🛒 CART DRAWER – SHOPIFY-STYLE UPGRADE
+   =============================== */
+
+/* smoother feel */
+.cart-drawer {
+    border-left: none;
+    box-shadow: -20px 0 60px rgba(0,0,0,0.25);
+    backdrop-filter: blur(10px);
+}
+
+/* header upgrade */
+.cart-header {
+    background: linear-gradient(135deg, var(--accent), #111);
+    padding: 28px 24px;
+}
+
+/* cart items spacing */
+.cart-item {
+    padding: 18px 0;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+/* hover feel like Shopify */
+.cart-item:hover {
+    background: #fafafa;
+    transform: translateX(2px);
+    transition: 0.2s ease;
+}
+
+/* image upgrade */
+.cart-item img {
+    width: 64px;
+    height: 64px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* remove button modern */
+.cart-item-remove,
+.cart-item button {
+    background: #fff;
+    border: 1px solid #eee;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.cart-item-remove:hover,
+.cart-item button:hover {
+    background: #ffeded;
+    border-color: #ffcccc;
+}
+
+/* total section upgrade */
+.cart-total {
+    background: #fafafa;
+    border-radius: 12px;
+    padding: 16px;
+}
+
+/* checkout button premium */
+.checkout-btn {
+    background: linear-gradient(135deg, var(--accent), #b00020);
+    border-radius: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.checkout-btn:active {
+    transform: scale(0.98);
+}
+
+/* ===============================
+   5. MOBILE TOUCH IMPROVEMENTS
+   =============================== */
+@media (max-width: 768px) {
+
+    body {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .product-card:active {
+        transform: scale(0.98);
+    }
+
+    .mini-cart-icon {
+        box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+    }
+}
+
+/* ===============================
+   🔥 CHECKOUT SYSTEM (SHOPIFY STYLE)
+   =============================== */
+
+.checkout-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    display: none;
+    z-index: 5000;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkout-overlay.active {
+    display: flex;
+}
+
+.checkout-modal {
+    width: 92%;
+    max-width: 520px;
+    background: #fff;
+    border-radius: 18px;
+    padding: 20px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* steps */
+.checkout-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 0.75rem;
+    color: #999;
+}
+
+.checkout-steps .step.active {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* step system */
+.checkout-step {
+    display: none;
+    animation: fadeInUp 0.4s ease;
+}
+
+.checkout-step.active {
+    display: block;
+}
+
+/* inputs */
+.checkout-step input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+/* payment box */
+.payment-box {
+    background: #f7f7f7;
+    padding: 14px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+/* close */
+.close-checkout {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+

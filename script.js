@@ -1,5 +1,5 @@
 // ===============================
-// FYDT SCRIPT.JS (FIXED VERSION)
+// FYDT SCRIPT.JS (OPTIMIZED + FIXED)
 // ===============================
 
 // GLOBAL STATE
@@ -8,7 +8,9 @@ let selectedColor = "Black";
 let selectedSize = "M";
 let isSignedIn = JSON.parse(localStorage.getItem("isSignedIn")) || false;
 
+// ===============================
 // SLIDESHOW
+// ===============================
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');
 let slideInterval = null;
@@ -71,12 +73,11 @@ function toggleSignIn() {
         return;
     }
 
-    if (modal) modal.classList.add('active');
+    modal?.classList.add('active');
 }
 
 function closeSignIn() {
-    const modal = document.getElementById('signinModalOverlay');
-    if (modal) modal.classList.remove('active');
+    document.getElementById('signinModalOverlay')?.classList.remove('active');
 }
 
 function handleSignIn(e) {
@@ -100,7 +101,6 @@ function handleSignOut() {
 
 function updateSignInButton() {
     const icon = document.querySelector('.icon-btn i');
-
     if (icon) {
         icon.className = isSignedIn ? 'fas fa-sign-out-alt' : 'fas fa-user';
     }
@@ -135,6 +135,9 @@ function saveCart() {
     updateCartCount();
 }
 
+// ===============================
+// CART RENDER (FIXED SAFE VERSION)
+// ===============================
 function loadCart() {
     const container = document.getElementById("cartItems");
     const totalEl = document.getElementById("total");
@@ -151,7 +154,8 @@ function loadCart() {
     }
 
     cart.forEach((item, i) => {
-        total += Number(item.price);
+        const price = Number(item.price) || 0;
+        total += price;
 
         container.innerHTML += `
             <div class="cart-item">
@@ -174,6 +178,9 @@ function removeItem(i) {
     loadCart();
 }
 
+// ===============================
+// ADD TO CART (SAFE)
+// ===============================
 function addToCart(name, price, color = "Black", size = "M", img = "") {
     cart.push({ name, price, color, size, img });
     saveCart();
@@ -182,7 +189,25 @@ function addToCart(name, price, color = "Black", size = "M", img = "") {
 }
 
 // ===============================
-// PRODUCT SHEET (safe version)
+// QUICK ADD
+// ===============================
+function quickAddToCart(event, el) {
+    event.stopPropagation();
+
+    const card = el.closest(".product-card");
+    if (!card) return;
+
+    addToCart(
+        card.dataset.name,
+        card.dataset.price,
+        "Black",
+        "M",
+        card.dataset.front
+    );
+}
+
+// ===============================
+// PRODUCT SHEET
 // ===============================
 function openSheet(img, name, price, front, back) {
     const sheet = document.getElementById("productSheet");
@@ -219,7 +244,7 @@ function addFromSheet() {
 }
 
 // ===============================
-// ARTIST MODAL (FIXED — THIS WAS BROKEN)
+// ARTIST MODAL
 // ===============================
 function openArtistModal(card) {
     const modal = document.getElementById("artistModalOverlay");
@@ -247,89 +272,6 @@ function addPosterToCartFromModal() {
 }
 
 // ===============================
-// INIT (SAFE)
-// ===============================
-document.addEventListener("DOMContentLoaded", () => {
-
-    updateCartCount();
-    loadCart();
-    updateSignInButton();
-    startSlideShow();
-
-    // close modal on overlay click
-    const modal = document.getElementById("artistModalOverlay");
-    if (modal) {
-        modal.addEventListener("click", (e) => {
-            if (e.target === modal) closeArtistModal();
-        });
-    }
-
-    // ESC key
-    document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-            closeCart();
-            closeArtistModal();
-            closeSheet();
-        }
-    });
-});
-
-// ===============================
-// IMAGE HOVER SWAP (FIXED)
-// ===============================
-document.querySelectorAll(".product-card").forEach(card => {
-    const img = card.querySelector("img");
-
-    const front = card.dataset.front;
-    const back = card.dataset.back;
-
-    if (!img || !front || !back) return;
-
-    card.addEventListener("mouseenter", () => {
-        img.src = back;
-    });
-
-    card.addEventListener("mouseleave", () => {
-        img.src = front;
-    });
-});
-
-// ===============================
-// IMAGE HOVER SWAP (FIXED)
-// ===============================
-document.querySelectorAll(".product-card").forEach(card => {
-    const img = card.querySelector("img");
-
-    const front = card.dataset.front;
-    const back = card.dataset.back;
-
-    if (!img || !front || !back) return;
-
-    card.addEventListener("mouseenter", () => {
-        img.src = back;
-    });
-
-    card.addEventListener("mouseleave", () => {
-        img.src = front;
-    });
-});
-
-function quickAddToCart(event, el) {
-    event.stopPropagation();
-
-    const card = el.closest(".product-card");
-
-    addToCart(
-        card.dataset.name,
-        card.dataset.price,
-        "Black",
-        "M",
-        card.dataset.front
-    );
-
-    showToast("Added to cart");
-}
-// ===============================
 // PRODUCT OPTIONS (FIXED)
 // ===============================
 function selectColor(color, btn) {
@@ -355,3 +297,124 @@ function selectSize(size, btn) {
 
     btn.classList.add("active");
 }
+
+// ===============================
+// INIT
+// ===============================
+document.addEventListener("DOMContentLoaded", () => {
+
+    updateCartCount();
+    loadCart();
+    updateSignInButton();
+    startSlideShow();
+
+    const modal = document.getElementById("artistModalOverlay");
+    modal?.addEventListener("click", (e) => {
+        if (e.target === modal) closeArtistModal();
+    });
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+            closeCart();
+            closeArtistModal();
+            closeSheet();
+        }
+    });
+});
+
+// ===============================
+// IMAGE HOVER SWAP (CLEAN FIX - ONLY ON DESKTOP)
+// ===============================
+if (window.innerWidth > 768) {
+    document.querySelectorAll(".product-card").forEach(card => {
+        const img = card.querySelector("img");
+        const front = card.dataset.front;
+        const back = card.dataset.back;
+
+        if (!img || !front || !back) return;
+
+        card.addEventListener("mouseenter", () => img.src = back);
+        card.addEventListener("mouseleave", () => img.src = front);
+    });
+}
+// ===============================
+// 🔥 CHECKOUT ENGINE
+// ===============================
+
+let checkoutStep = 0;
+
+function openCheckout() {
+    document.getElementById("checkoutOverlay").classList.add("active");
+    renderCheckoutItems();
+    checkoutStep = 0;
+    showStep();
+}
+
+function closeCheckout() {
+    document.getElementById("checkoutOverlay").classList.remove("active");
+}
+
+function showStep() {
+    document.querySelectorAll(".checkout-step").forEach((s, i) => {
+        s.classList.remove("active");
+    });
+
+    const steps = ["step-cart", "step-details", "step-payment", "step-success"];
+    document.getElementById(steps[checkoutStep]).classList.add("active");
+
+    document.querySelectorAll(".checkout-steps .step").forEach((s, i) => {
+        s.classList.toggle("active", i <= checkoutStep);
+    });
+}
+
+function nextStep() {
+    if (checkoutStep < 3) {
+        checkoutStep++;
+        showStep();
+    }
+}
+
+function renderCheckoutItems() {
+    const container = document.getElementById("checkoutItems");
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    cart.forEach(item => {
+        container.innerHTML += `
+            <div class="cart-item">
+                <img src="${item.img}" />
+                <div>
+                    <strong>${item.name}</strong>
+                    <p>R${item.price}</p>
+                </div>
+            </div>
+        `;
+    });
+}
+
+function payNow() {
+    // PayFast redirect simulation (frontend-ready)
+    const total = cart.reduce((sum, i) => sum + Number(i.price), 0);
+
+    const url = `https://www.payfast.co.za/eng/process?amount=${total}`;
+
+    window.open(url, "_blank");
+
+    checkoutStep = 3;
+    showStep();
+}
+
+function whatsappOrder() {
+    const msg = cart.map(i => `${i.name} - R${i.price}`).join("%0A");
+
+    const url = `https://wa.me/27700000000?text=New%20Order:%0A${msg}`;
+
+    window.open(url, "_blank");
+}
+
+function openCheckoutFromCart() {
+    closeCart();
+    openCheckout();
+}
+
